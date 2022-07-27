@@ -1,0 +1,68 @@
+{
+  "project_info": {
+    "project_number": "989880599861",
+    "project_id": "rizal-al-quran",
+    "storage_bucket": "rizal-al-quran.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:989880599861:android:fb94a778ee35b75bd5387c",
+        "android_client_info": {
+          "package_name": "com.example.alquran_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "989880599861-i77o3j8ls9355ijtig1urq8ek3iuneoh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCNWd02uWMnMFJ23DgIThMtGoMAJfvdCjI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "989880599861-i77o3j8ls9355ijtig1urq8ek3iuneoh.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:989880599861:android:9c3dd0f28b8cd894d5387c",
+        "android_client_info": {
+          "package_name": "com.example.jadwal_sholat_coba"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "989880599861-i77o3j8ls9355ijtig1urq8ek3iuneoh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCNWd02uWMnMFJ23DgIThMtGoMAJfvdCjI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "989880599861-i77o3j8ls9355ijtig1urq8ek3iuneoh.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
