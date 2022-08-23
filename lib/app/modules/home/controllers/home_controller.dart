@@ -1,5 +1,7 @@
 import 'dart:convert';
 
+import 'package:jadwal_sholat_coba/data/models/hadis.dart';
+
 import '../../../../data/models/juz.dart';
 import '../../../../data/models/surah.dart';
 import 'package:flutter/material.dart';
@@ -27,6 +29,30 @@ class HomeController extends GetxController {
       Get.snackbar("ERROR", "Tidak Bisa Ambil Data");
     }
     return allSurah;
+  }
+
+  //All Hadis
+  List<hadis> allhadis = [];
+  Future<List<hadis>> ambilSemuaHadis() async {
+    Uri url = Uri.parse("https://hadis-api-id.vercel.app/hadith");
+    try {
+      var res = await http.get(url);
+      print("======");
+      print(res);
+      print("======");
+      List? data = (json.decode(res.body) as List<dynamic>);
+
+      if (data == null || data.isEmpty) {
+        return [];
+      } else {
+        allhadis = data.map((e) => hadis.fromJson(e)).toList();
+        print("p");
+      }
+    } catch (e) {
+      print(e);
+      Get.snackbar("ERROR", "Tidak Bisa Ambil Data Hadis");
+    }
+    return allhadis;
   }
 
   //Search

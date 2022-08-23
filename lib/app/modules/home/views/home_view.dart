@@ -1,5 +1,6 @@
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 import 'package:jadwal_sholat_coba/controller/searchAyat.dart';
+import 'package:jadwal_sholat_coba/data/models/hadis.dart';
 
 import '../../../../data-assets/warna.dart';
 import '../../../../data/models/surah.dart';
@@ -100,7 +101,7 @@ class HomeView extends GetView<HomeController> {
         ],
       ),
       body: DefaultTabController(
-        length: 2,
+        length: 3,
         child: Padding(
           padding: const EdgeInsets.only(top: 20, right: 20, left: 20),
           child: Column(
@@ -182,9 +183,9 @@ class HomeView extends GetView<HomeController> {
                   Tab(
                     text: "Surah",
                   ),
-                  // Tab(
-                  //   text: "Juz",
-                  // ),
+                  Tab(
+                    text: "Juz",
+                  ),
                   Tab(
                     text: "Bookmark",
                   )
@@ -252,64 +253,58 @@ class HomeView extends GetView<HomeController> {
 
                         //=============================
                         //Tab Juz
-                        // FutureBuilder<List<juz.Juz>>(
-                        //   future: controller.ambilSemuaJuz(),
-                        //   builder: (context, snapshot) {
-                        // if (snapshot.connectionState ==
-                        //     ConnectionState.waiting) {
-                        //   return const Center(
-                        //     child: CircularProgressIndicator(),
-                        //   );
-                        // }
+                        FutureBuilder<List<hadis>>(
+                          future: controller.ambilSemuaHadis(),
+                          builder: (context, snapshot) {
+                            if (snapshot.connectionState ==
+                                ConnectionState.waiting) {
+                              return const Center(
+                                child: CircularProgressIndicator(),
+                              );
+                            }
 
-                        // if (!snapshot.hasData) {
-                        //   return const Center(
-                        //     child: Text("Tidak Ada Data"),
-                        //   );
-                        // }
-                        //     return ListView.builder(
-                        //         itemCount: snapshot.data!.length,
-                        //         itemBuilder: (context, index) {
-                        //           juz.Juz detailJuz = snapshot.data![index];
+                            if (!snapshot.hasData) {
+                              return const Center(
+                                child: Text("Tidak Ada Data"),
+                              );
+                            }
+                            return ListView.builder(
+                                itemCount: snapshot.data!.length,
+                                itemBuilder: (context, index) {
+                                  hadis getHadis = snapshot.data![index];
 
-                        //           return ListTile(
-                        //             onTap: () {
-                        //               Get.toNamed(Routes.JUZ_DETAIL,
-                        //                   arguments: {
-                        //                     "Juz": detailJuz,
-                        //                   });
-                        //             },
-                        //             leading: Container(
-                        //               height: 35,
-                        //               width: 35,
-                        //               decoration: BoxDecoration(
-                        //                 image: DecorationImage(
-                        //                   image: AssetImage(
-                        //                     Get.isDarkMode
-                        //                         ? "assets/img/borderDark.png"
-                        //                         : "assets/img/borderLight.png",
-                        //                   ),
-                        //                 ),
-                        //               ),
-                        //               child: Center(
-                        //                 child: Text("${index + 1}"),
-                        //               ),
-                        //             ),
-                        //             title: Text("Juz Ke - ${index + 1}"),
-                        //             isThreeLine: true,
-                        //             subtitle: Column(
-                        //               crossAxisAlignment:
-                        //                   CrossAxisAlignment.start,
-                        //               children: [
-                        //                 Text("Mulai ${detailJuz.juzStartInfo}"),
-                        //                 Text("Sampai ${detailJuz.juzEndInfo}"),
-                        //               ],
-                        //             ),
-                        //           );
-                        //         });
-                        //   },
-                        // ),
-                        //============================
+                                  return ListTile(
+                                    onTap: () {},
+                                    leading: Container(
+                                      height: 35,
+                                      width: 35,
+                                      decoration: BoxDecoration(
+                                        image: DecorationImage(
+                                          image: AssetImage(
+                                            Get.isDarkMode
+                                                ? "assets/img/borderDark.png"
+                                                : "assets/img/borderLight.png",
+                                          ),
+                                        ),
+                                      ),
+                                      child: Center(
+                                        child: Text("${index + 1}"),
+                                      ),
+                                    ),
+                                    title: Text("Hadis - ${index + 1}"),
+                                    isThreeLine: true,
+                                    subtitle: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text("Mulai ${getHadis.name}"),
+                                        Text("Sampai ${getHadis.total}"),
+                                      ],
+                                    ),
+                                  );
+                                });
+                          },
+                        ),
 
                         //Tab Bookmark
                         Column(

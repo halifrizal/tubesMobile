@@ -2,6 +2,8 @@ import 'package:get/get.dart';
 
 import '../app/modules/detail/bindings/detail_binding.dart';
 import '../app/modules/detail/views/detail_view.dart';
+import '../app/modules/detailhadis/bindings/detailhadis_binding.dart';
+import '../app/modules/detailhadis/views/detailhadis_view.dart';
 import '../app/modules/favorite/bindings/favorite_binding.dart';
 import '../app/modules/favorite/views/favorite_view.dart';
 import '../app/modules/home/bindings/home_binding.dart';
@@ -90,6 +92,11 @@ class AppPages {
       name: _Paths.PILIH_KOTA,
       page: () => PilihKotaView(),
       binding: PilihKotaBinding(),
+    ),
+    GetPage(
+      name: _Paths.DETAILHADIS,
+      page: () => DetailhadisView(),
+      binding: DetailhadisBinding(),
     ),
   ];
 }

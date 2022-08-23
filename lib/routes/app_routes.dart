@@ -16,6 +16,7 @@ abstract class Routes {
   static const JADWAL = _Paths.JADWAL;
   static const COBA = _Paths.COBA;
   static const PILIH_KOTA = _Paths.PILIH_KOTA;
+  static const DETAILHADIS = _Paths.DETAILHADIS;
 }
 
 abstract class _Paths {
@@ -33,4 +34,5 @@ abstract class _Paths {
   static const JADWAL = '/jadwal';
   static const COBA = '/coba';
   static const PILIH_KOTA = '/pilih-kota';
+  static const DETAILHADIS = '/detailhadis';
 }
