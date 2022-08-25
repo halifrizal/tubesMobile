@@ -32,7 +32,7 @@ class IntroductionView extends GetView<IntroductionController> {
             const Padding(
               padding: EdgeInsets.symmetric(horizontal: 50),
               child: Text(
-                "BACA AKU WAHAI ANAK ANAK ADAM DAN HAWA",
+                "Dan bila dibacakan Al-Quran, maka dengarkan secara baik-baik, dan perhatikan secara seksama supaya kamu mendapat rahmat. (QS. Al-A’raf: 204)",
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontSize: 16,

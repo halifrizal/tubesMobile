@@ -35,24 +35,14 @@ class HomeController extends GetxController {
   List<hadis> allhadis = [];
   Future<List<hadis>> ambilSemuaHadis() async {
     Uri url = Uri.parse("https://hadis-api-id.vercel.app/hadith");
-    try {
-      var res = await http.get(url);
-      print("======");
-      print(res);
-      print("======");
-      List? data = (json.decode(res.body) as List<dynamic>);
-
-      if (data == null || data.isEmpty) {
-        return [];
-      } else {
-        allhadis = data.map((e) => hadis.fromJson(e)).toList();
-        print("p");
-      }
-    } catch (e) {
-      print(e);
-      Get.snackbar("ERROR", "Tidak Bisa Ambil Data Hadis");
+    final response = await http.get(url);
+    if (response.statusCode == 200) {
+      Iterable it = jsonDecode(response.body);
+      List<hadis> allHadis = it.map((e) => hadis.fromJson(e)).toList();
+      return allHadis;
+    } else {
+      throw Exception("Failed");
     }
-    return allhadis;
   }
 
   //Search

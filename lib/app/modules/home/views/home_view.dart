@@ -101,7 +101,7 @@ class HomeView extends GetView<HomeController> {
         ],
       ),
       body: DefaultTabController(
-        length: 3,
+        length: 2,
         child: Padding(
           padding: const EdgeInsets.only(top: 20, right: 20, left: 20),
           child: Column(
@@ -184,11 +184,8 @@ class HomeView extends GetView<HomeController> {
                     text: "Surah",
                   ),
                   Tab(
-                    text: "Juz",
+                    text: "Hadist",
                   ),
-                  Tab(
-                    text: "Bookmark",
-                  )
                 ],
               ),
               StreamBuilder(
@@ -252,7 +249,7 @@ class HomeView extends GetView<HomeController> {
                             }),
 
                         //=============================
-                        //Tab Juz
+                        //Tab Hadist
                         FutureBuilder<List<hadis>>(
                           future: controller.ambilSemuaHadis(),
                           builder: (context, snapshot) {
@@ -274,7 +271,10 @@ class HomeView extends GetView<HomeController> {
                                   hadis getHadis = snapshot.data![index];
 
                                   return ListTile(
-                                    onTap: () {},
+                                    onTap: () {
+                                      Get.toNamed(Routes.DETAILHADIS,
+                                          arguments: getHadis);
+                                    },
                                     leading: Container(
                                       height: 35,
                                       width: 35,
@@ -291,43 +291,19 @@ class HomeView extends GetView<HomeController> {
                                         child: Text("${index + 1}"),
                                       ),
                                     ),
-                                    title: Text("Hadis - ${index + 1}"),
+                                    title: Text("HR. ${getHadis.name}"),
                                     isThreeLine: true,
                                     subtitle: Column(
                                       crossAxisAlignment:
                                           CrossAxisAlignment.start,
                                       children: [
-                                        Text("Mulai ${getHadis.name}"),
-                                        Text("Sampai ${getHadis.total}"),
+                                        Text("Total ${getHadis.total}"),
                                       ],
                                     ),
                                   );
                                 });
                           },
                         ),
-
-                        //Tab Bookmark
-                        Column(
-                          children: [
-                            StreamBuilder<User?>(
-                              stream: authC.streamAuthStatus,
-                              builder: (context, snapshot) {
-                                if (snapshot.connectionState ==
-                                    ConnectionState.active) {
-                                  print(snapshot.data);
-                                  return Material(
-                                    child: snapshot.data != null &&
-                                            snapshot.data!.emailVerified == true
-                                        ? adaIsi()
-                                        : tidakAda(),
-                                  );
-                                } else {
-                                  return cek();
-                                }
-                              },
-                            )
-                          ],
-                        )
                       ]),
                     );
                   })
